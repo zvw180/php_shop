@@ -1,0 +1,25 @@
+
+RewriteEngine on
+
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{HTTP_HOST} ^phamthanhnam.com[nc]
+RewriteRule ^(.*)$ http://www.phamthanhnam.com/$1 [r=301,nc]
+
+RewriteRule ^(([^/]+/)*[^.]+)$ /$1.php [L]
+RewriteRule ^(.*).html$ $1.php [R=301,L]
+
+
+
+RewriteCond %{REQUEST_URI} !#
+
+RewriteCond %{REQUEST_URI} !(.*)/$
+
+RewriteRule ^(.*)$ http://phamthanhnam.com/$1/ [L,R=301]
+
+Redirect 301 /index.php /index.php
+RedirectMatch 301 /(.*) //$1
+
+ErrorDocument 404 404.php
